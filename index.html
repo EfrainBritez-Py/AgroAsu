@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrov-Terinaria Asunción - Suministros Veterinarios, Agrícolas y Ganaderos</title>
+    <title>Agroveterinaria Asunción - Suministros Veterinarios, Agrícolas y Ganaderos</title>
     <style>
         * {
             margin: 0;
@@ -471,6 +471,146 @@
         section {
             scroll-margin-top: 100px;
         }
+
+        /* Add to the existing CSS */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float:before {
+            content: "💬";
+        }
+
+        /* Enhanced Responsive Design with Centering */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .hero p {
+                text-align: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            /* Center all text content in mobile */
+            .section-title {
+                text-align: center;
+            }
+
+            .section-subtitle {
+                text-align: center;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+
+            .about-text h2 {
+                text-align: center;
+            }
+
+            .about-text p {
+                text-align: center;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-info h3 {
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-content {
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            /* Center form elements */
+            .contact-form {
+                text-align: left; /* Keep form fields left-aligned for usability */
+            }
+
+            .contact-form h3 {
+                text-align: center;
+            }
+
+            /* Center service cards content */
+            .service-card {
+                text-align: center;
+            }
+
+            /* Center feature items */
+            .feature-item {
+                text-align: center;
+            }
+
+            /* Center logo on mobile */
+            .logo-container {
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -478,7 +618,7 @@
     <header>
         <nav class="container">
             <div class="logo-container">
-                <img src="assets/logo.png" alt="Agrov-Terinaria Asunción Logo">
+                <img src="assets/logo.png" alt="Agroveterinaria Asunción Logo">
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
@@ -492,7 +632,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h1>Agrov-Terinaria Asunción</h1>
+            <h1>Agroveterinaria Asunción</h1>
             <p class="subtitle">Tu Socio Confiable en Suministros Agropecuarios</p>
             <p>Ofrecemos productos veterinarios, agrícolas y ganaderos de la más alta calidad para apoyar el crecimiento y bienestar de tu negocio agropecuario en Paraguay.</p>
             <a href="#contacto" class="cta-button">Solicitar Cotización</a>
@@ -544,7 +684,7 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Sobre <span class="highlight">Agrov-Terinaria Asunción</span></h2>
+                    <h2>Sobre <span class="highlight">Agroveterinaria Asunción</span></h2>
                     <p>Con más de <strong>20 años de experiencia</strong> en el mercado paraguayo, nos hemos consolidado como líderes en la distribución de productos veterinarios, agrícolas y ganaderos.</p>
                     <p>Nuestro compromiso con la <span class="highlight">calidad, innovación y servicio al cliente</span> nos ha permitido construir relaciones duraderas con productores, veterinarios y empresas agropecuarias en todo el país.</p>
                     <p>Trabajamos con las mejores marcas internacionales y nacionales para ofrecer soluciones integrales que impulsen el desarrollo del sector agropecuario paraguayo.</p>
@@ -700,7 +840,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Agrov-Terinaria Asunción</h3>
+                    <h3>Agroveterinaria Asunción</h3>
                     <p>Líderes en suministros veterinarios, agrícolas y ganaderos en Paraguay.</p>
                     <p>Comprometidos con el desarrollo del sector agropecuario nacional.</p>
                 </div>
@@ -730,16 +870,55 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Agrov-Terinaria Asunción. Todos los derechos reservados. | Sirviendo al sector agropecuario paraguayo con excelencia.</p>
+                <p>&copy; 2024 Agroveterinaria Asunción. Todos los derechos reservados. | Sirviendo al sector agropecuario paraguayo con excelencia.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Form submission handler
+        // Enhanced form submission with WhatsApp integration
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo pronto.');
+            
+            // Get form data
+            const formData = new FormData(this);
+            const nombre = formData.get('nombre');
+            const empresa = formData.get('empresa') || 'No especificada';
+            const telefono = formData.get('telefono');
+            const email = formData.get('email');
+            const categoria = formData.get('categoria');
+            const mensaje = formData.get('mensaje') || 'Sin mensaje adicional';
+            
+            // Format WhatsApp message
+            const whatsappMessage = `
+🌾 *Nueva Consulta - Agroveterinaria Asunción*
+
+👤 *Cliente:* ${nombre}
+🏢 *Empresa:* ${empresa}
+📞 *Teléfono:* ${telefono}
+📧 *Email:* ${email}
+📋 *Categoría:* ${categoria}
+
+💬 *Mensaje:*
+${mensaje}
+
+---
+_Enviado desde el sitio web_
+            `.trim();
+            
+            // Your WhatsApp business number (replace with your actual number)
+            const whatsappNumber = '595981123456'; // Format: country code + number (no + or spaces)
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Show confirmation
+            alert('¡Gracias por tu consulta! Te estamos redirigiendo a WhatsApp para completar el contacto.');
+            
+            // Reset form
             this.reset();
         });
 
@@ -772,5 +951,12 @@
             }
         });
     </script>
+
+    <!-- Add this before the closing </body> tag -->
+    <a href="https://wa.me/1?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20productos%20agropecuarios" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Contactar por WhatsApp">
+    </a>
 </body>
 </html>
