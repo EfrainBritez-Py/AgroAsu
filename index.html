@@ -4,683 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agroveterinaria Asunción - Suministros Veterinarios, Agrícolas y Ganaderos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            height: 70px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #307445;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #DC143C;
-        }
-
-        /* Hero Section with Carousel */
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-        }
-
-        /* Remove or comment out this entire rule: */
-        /*
-        .carousel-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(48, 116, 69, 0.8) 0%, rgba(48, 116, 69, 0.6) 100%);
-            z-index: 1;
-        }
-        */
-
-        /* Replace the existing .slide-1, .slide-2, .slide-3 styles with: */
-        .slide-1 {
-            background: linear-gradient(rgba(48, 116, 69, 0.6), rgba(48, 116, 69, 0.6)), 
-                        url('assets/carousel 1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .slide-2 {
-            background: linear-gradient(rgba(48, 116, 69, 0.6), rgba(48, 116, 69, 0.6)), 
-                url('assets/carousel 2.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .slide-3 {
-            background: linear-gradient(rgba(48, 116, 69, 0.6), rgba(48, 116, 69, 0.6)), 
-                url('assets/carousel 3.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #FFE4E1;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #DC143C;
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
-        }
-
-        .cta-button:hover {
-            background: #B22222;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
-        }
-
-        /* Carousel Navigation */
-        .carousel-nav {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 3;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .carousel-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: #F8F8FF;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: #307445;
-            font-weight: bold;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s;
-            border-top: 4px solid #307445;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            border-top-color: #DC143C;
-        }
-
-        .service-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #307445, #4a9960);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .service-card h3 {
-            color: #307445;
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-            font-weight: bold;
-        }
-
-        .service-card p {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            color: #307445;
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        .about-text .highlight {
-            color: #DC143C;
-            font-weight: bold;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: #F0FFF0;
-            border-radius: 10px;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #DC143C;
-        }
-
-        .stat-label {
-            color: #307445;
-            font-weight: 600;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, #307445, #4a9960);
-            height: 450px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: #307445;
-            color: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #FFE4E1;
-        }
-
-        .feature-item h3 {
-            color: #FFE4E1;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
-
-        .feature-item p {
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: #F8F8FF;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h3 {
-            color: #307445;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: #DC143C;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .contact-form h3 {
-            color: #307445;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #307445;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #E0E0E0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #307445;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #4a9960;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .footer-section p,
-        .footer-section li {
-            margin-bottom: 0.5rem;
-            color: #ccc;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #4a9960;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #999;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            background-color: #128c7e;
-            transform: scale(1.1);
-        }
-
-        .whatsapp-float:before {
-            content: "💬";
-        }
-
-        /* Enhanced Responsive Design with Centering */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-                text-align: center;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-                text-align: center;
-            }
-
-            .hero p {
-                text-align: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            /* Center all text content in mobile */
-            .section-title {
-                text-align: center;
-            }
-
-            .section-subtitle {
-                text-align: center;
-            }
-
-            .about-text {
-                text-align: center;
-            }
-
-            .about-text h2 {
-                text-align: center;
-            }
-
-            .about-text p {
-                text-align: center;
-            }
-
-            .contact-info {
-                text-align: center;
-            }
-
-            .contact-info h3 {
-                text-align: center;
-            }
-
-            .contact-item {
-                justify-content: center;
-                text-align: center;
-            }
-
-            .footer-content {
-                text-align: center;
-            }
-
-            .footer-section {
-                text-align: center;
-            }
-
-            /* Center form elements */
-            .contact-form {
-                text-align: left; /* Keep form fields left-aligned for usability */
-            }
-
-            .contact-form h3 {
-                text-align: center;
-            }
-
-            /* Center service cards content */
-            .service-card {
-                text-align: center;
-            }
-
-            /* Center feature items */
-            .feature-item {
-                text-align: center;
-            }
-
-            /* Center logo on mobile */
-            .logo-container {
-                justify-content: center;
-                width: 100%;
-            }
-
-            nav {
-                justify-content: center;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        section {
-            scroll-margin-top: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -710,7 +34,7 @@
             <h1>Agroveterinaria Asunción</h1>
             <p class="subtitle">Nos identificamos con usted y ofrecemos calidad</p>
             <p>Ofrecemos una amplia gama de productos veterinarios, agrícolas, ganaderos y para mascotas. Desde suministros profesionales para el campo hasta alimentos y accesorios para perros y gatos, brindamos soluciones completas para el cuidado animal y la producción agropecuaria en Paraguay.</p>
-            <a href="#contacto" class="cta-button">Solicitar Cotización</a>
+            <a href="#contacto" class="cta-button">Contáctanos</a>
         </div>
         
         <div class="carousel-nav">
@@ -726,47 +50,61 @@
             <h2 class="section-title">Nuestros Productos y Servicios</h2>
             <p class="section-subtitle">Soluciones integrales para el sector agropecuario paraguayo</p>
             <div class="services-grid">
-    <div class="service-card">
-        <div class="service-icon">🐄</div>
-        <h3>Suministros Ganaderos</h3>
-        <p>Equipos y productos especializados para el cuidado del ganado bovino, porcino, ovino y avícola. Incluye suplementos alimenticios, medicamentos y equipos de manejo profesional.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">🌾</div>
-        <h3>Productos Agrícolas</h3>
-        <p>Semillas certificadas, fertilizantes, agroquímicos y herramientas agrícolas para maximizar la productividad de tus cultivos de soja, maíz, trigo y otros cereales.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">💉</div>
-        <h3>Servicios de Vacunación</h3>
-        <p>Programas completos de vacunación para ganado y mascotas de granja. Incluye vacunas, jeringas, agujas y asesoramiento veterinario profesional.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">🐕</div>
-        <h3>Alimentos para Mascotas</h3>
-        <p>Comida premium para perros y gatos de todas las edades. Alimentos balanceados, snacks, suplementos nutricionales y productos especializados para mascotas domésticas.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">🎾</div>
-        <h3>Juguetes y Accesorios</h3>
-        <p>Amplia variedad de juguetes, correas, collares, camas, transportadoras y accesorios para el entretenimiento y comodidad de perros y gatos.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">👕</div>
-        <h3>Ropa y Equipamiento</h3>
-        <p>Indumentaria y equipos de protección para trabajadores del campo: botas, guantes, sombreros, ropa de trabajo, arneses y equipos de seguridad laboral.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3>Maquinaria Agrícola</h3>
-        <p>Equipos y maquinaria para agricultura y ganadería, herramientas especializadas, sistemas de riego y repuestos para mantener tu operación funcionando.</p>
-    </div>
-    <div class="service-card">
-        <div class="service-icon">🚚</div>
-        <h3>Distribución Nacional</h3>
-        <p>Servicio de entrega confiable en todo Paraguay, con logística especializada para productos sensibles, alimentos y entregas programadas a domicilio.</p>
-    </div>
-</div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/services/ganadero.png" alt="Suministros Ganaderos">
+                    </div>
+                    <div class="service-content">
+                        <h3>Suministros Ganaderos</h3>
+                        <p>Equipos y productos especializados para el cuidado del ganado bovino, porcino, ovino y avícola. Incluye suplementos alimenticios, medicamentos y equipos de manejo profesional.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/services/agricola.png" alt="Productos Agrícolas">
+                    </div>
+                    <div class="service-content">
+                        <h3>Productos Agrícolas</h3>
+                        <p>Semillas certificadas, fertilizantes, agroquímicos y herramientas agrícolas para maximizar la productividad de tus cultivos de soja, maíz, trigo y otros cereales.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/services/vacunacion.png" alt="Servicios de Vacunación">
+                    </div>
+                    <div class="service-content">
+                        <h3>Servicios de Vacunación</h3>
+                        <p>Programas completos de vacunación para ganado y mascotas de granja. Incluye vacunas, jeringas, agujas y asesoramiento veterinario profesional.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/services/mascotas.png" alt="Alimentos para Mascotas">
+                    </div>
+                    <div class="service-content">
+                        <h3>Alimentos para Mascotas</h3>
+                        <p>Comida premium para perros y gatos de todas las edades. Alimentos balanceados, snacks, suplementos nutricionales y productos especializados para mascotas domésticas.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/services/juguetes.png" alt="Juguetes y Accesorios">
+                    </div>
+                    <div class="service-content">
+                        <h3>Juguetes y Accesorios</h3>
+                        <p>Amplia variedad de juguetes, correas, collares, camas, transportadoras y accesorios para el entretenimiento y comodidad de perros y gatos.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/services/ropa.png" alt="Ropa y Equipamiento">
+                    </div>
+                    <div class="service-content">
+                        <h3>Ropa y Equipamiento</h3>
+                        <p>Indumentaria y equipos de protección para trabajadores del campo: botas, guantes, sombreros, ropa de trabajo, arneses y equipos de seguridad laboral.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -803,7 +141,7 @@
                 </div>
                 <div class="about-image">
                     <div>
-                        <h3>🏢 Centro de Distribución Moderno</h3>
+                        <h3>Centro de Distribución Moderno</h3>
                         <p>Instalaciones equipadas con tecnología de punta para el almacenamiento y distribución de productos agropecuarios</p>
                     </div>
                 </div>
@@ -851,16 +189,18 @@
                     <div class="contact-item">
                         <div class="contact-icon">📍</div>
                         <div>
-                            <strong>Dirección:</strong><br>
-                            Av. Eusebio Ayala 1234<br>
-                            Asunción, Paraguay
+                            <a href="https://maps.app.goo.gl/mDziTHN7qCaEPvDF8" class="map-link" target="_blank">
+                                <strong>Dirección</strong><br>
+                                Monseñor Rodriguez c/ Av. Julio Cesar Riquelme<br>
+                                Ciudad del Este, Paraguay
+                            </a>
                         </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon">📞</div>
                         <div>
-                            <strong>Teléfonos:</strong><br>
+                            <strong>Teléfonos</strong><br>
                             +595 21 123-456<br>
                             +595 981 123-456
                         </div>
@@ -869,7 +209,7 @@
                     <div class="contact-item">
                         <div class="contact-icon">✉️</div>
                         <div>
-                            <strong>Email:</strong><br>
+                            <strong>Email</strong><br>
                             info@agrovterinaria.com.py<br>
                             ventas@agrovterinaria.com.py
                         </div>
@@ -878,9 +218,9 @@
                     <div class="contact-item">
                         <div class="contact-icon">🕒</div>
                         <div>
-                            <strong>Horarios:</strong><br>
-                            Lunes a Viernes: 7:00 - 18:00<br>
-                            Sábados: 7:00 - 12:00
+                            <strong>Horarios</strong><br>
+                            Lunes a Viernes: 7:00 - 17:00<br>
+                            Sábados: 7:00 - 13:00
                         </div>
                     </div>
                 </div>
@@ -957,7 +297,7 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contacto</h3>
-                    <p>📍 Av. Eusebio Ayala 1234, Asunción</p>
+                    <p>📍 Ciudad del Este, Paraguay</p>
                     <p>📞 +595 21 123-456</p>
                     <p>✉️ info@agrovterinaria.com.py</p>
                 </div>
@@ -968,117 +308,13 @@
         </div>
     </footer>
 
-    <script>
-        // Carousel functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            // Remove active class from all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Add active class to current slide and dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // Auto-advance carousel every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-
-        // Enhanced form submission with WhatsApp integration
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const nombre = formData.get('nombre');
-            const empresa = formData.get('empresa') || 'No especificada';
-            const telefono = formData.get('telefono');
-            const email = formData.get('email');
-            const categoria = formData.get('categoria');
-            const mensaje = formData.get('mensaje') || 'Sin mensaje adicional';
-            
-            // Format WhatsApp message
-            const whatsappMessage = `
-🌾 *Nueva Consulta - Agroveterinaria Asunción S.R.L.*
-
-👤 *Cliente:* ${nombre}
-🏢 *Empresa:* ${empresa}
-📞 *Teléfono:* ${telefono}
-📧 *Email:* ${email}
-📋 *Categoría:* ${categoria}
-
-💬 *Mensaje:*
-${mensaje}
-
----
-_Enviado desde el sitio web_
-            `.trim();
-            
-            // Your WhatsApp business number (replace with your actual number)
-            const whatsappNumber = '0000000'; // Format: country code + number (no + or spaces)
-            
-            // Create WhatsApp URL
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-            
-            // Show confirmation
-            alert('¡Gracias por tu consulta! Te estamos redirigiendo a WhatsApp para completar el contacto.');
-            
-            // Reset form
-            this.reset();
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'white';
-                header.style.backdropFilter = 'none';
-            }
-        });
-    </script>
-
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/595981123456?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20productos%20agropecuarios" 
        class="whatsapp-float" 
        target="_blank"
        title="Contactar por WhatsApp">
     </a>
+
+    <script src="script.js"></script>
 </body>
 </html>
