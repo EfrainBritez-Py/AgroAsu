@@ -43,6 +43,13 @@ nav {
   width: auto;
 }
 
+.nav-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -58,6 +65,16 @@ nav {
 
 .nav-links a:hover {
   color: #dc143c;
+}
+
+.business-hours {
+  font-size: 0.9rem;
+  color: #307445;
+  font-weight: 600;
+  background: #f0fff0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #307445;
 }
 
 /* Hero Section with Carousel */
@@ -200,8 +217,16 @@ nav {
   text-align: center;
   font-size: 2.8rem;
   margin-bottom: 1rem;
-  color: #307445;
+  color: #ffffff;
   font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.section-title-v2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #307445;
 }
 
 .section-subtitle {
@@ -362,7 +387,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 0rem;
 }
 
 .feature-item {
@@ -402,43 +427,56 @@ nav {
   background: #f8f8ff;
 }
 
-.contact-content {
+.contact-info-horizontal {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-
-.contact-info h3 {
-  color: #307445;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: bold;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  padding: 2rem;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  border-top: 4px solid #307445;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-top-color: #dc143c;
 }
 
 .contact-icon {
-  width: 50px;
-  height: 50px;
-  background: #dc143c;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #307445, #4a9960);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  flex-shrink: 0;
 }
 
-/* Map Link Styling */
+.contact-item div:last-child {
+  flex: 1;
+}
+
+.contact-item strong {
+  color: #307445;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Map Link Styling - Fixed */
 .map-link {
   color: #307445;
   text-decoration: none;
@@ -461,47 +499,11 @@ nav {
   color: #8b0000;
 }
 
+/* Remove old contact styles */
+.contact-content,
+.contact-info,
 .contact-form {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form h3 {
-  color: #307445;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #307445;
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: #307445;
+  display: none;
 }
 
 /* Footer */
@@ -583,8 +585,25 @@ footer {
 
 /* Enhanced Responsive Design with Centering */
 @media (max-width: 768px) {
+  .nav-right {
+    display: none;
+  }
+
   .nav-links {
     display: none;
+  }
+
+  .business-hours {
+    display: none;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .logo-container {
+    justify-content: center;
+    width: 100%;
   }
 
   .hero h1 {
@@ -601,8 +620,7 @@ footer {
     text-align: center;
   }
 
-  .about-content,
-  .contact-content {
+  .about-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
@@ -635,6 +653,23 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .contact-info-horizontal {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+
   /* Center all text content in mobile */
   .section-title {
     text-align: center;
@@ -656,33 +691,11 @@ footer {
     text-align: center;
   }
 
-  .contact-info {
-    text-align: center;
-  }
-
-  .contact-info h3 {
-    text-align: center;
-  }
-
-  .contact-item {
-    justify-content: center;
-    text-align: center;
-  }
-
   .footer-content {
     text-align: center;
   }
 
   .footer-section {
-    text-align: center;
-  }
-
-  /* Center form elements */
-  .contact-form {
-    text-align: left; /* Keep form fields left-aligned for usability */
-  }
-
-  .contact-form h3 {
     text-align: center;
   }
 
@@ -694,16 +707,6 @@ footer {
   /* Center feature items */
   .feature-item {
     text-align: center;
-  }
-
-  /* Center logo on mobile */
-  .logo-container {
-    justify-content: center;
-    width: 100%;
-  }
-
-  nav {
-    justify-content: center;
   }
 }
 

@@ -13,12 +13,17 @@
             <div class="logo-container">
                 <img src="assets/logo.png" alt="Agroveterinaria Asunción S.R.L. Logo">
             </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="business-hours">
+                    🕒 Lunes a Viernes: 7:00 - 18:00 | Sábados: 7:00 - 13:00
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -47,7 +52,7 @@
     <!-- Services Section -->
     <section id="servicios" class="services">
         <div class="container">
-            <h2 class="section-title">Nuestros Productos y Servicios</h2>
+            <h2 class="section-title-v2">Nuestros Productos y Servicios</h2>
             <p class="section-subtitle">Soluciones integrales para el sector agropecuario paraguayo</p>
             <div class="services-grid">
                 <div class="service-card">
@@ -169,11 +174,6 @@
                     <h3>Asesoría Especializada</h3>
                     <p>Equipo de profesionales veterinarios y agrónomos para brindarte el mejor asesoramiento</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Entrega Rápida</h3>
-                    <p>Procesamiento rápido de pedidos y entrega confiable en todo el territorio nacional</p>
-                </div>
             </div>
         </div>
     </section>
@@ -181,88 +181,35 @@
     <!-- Contact Section -->
     <section id="contacto" class="contact">
         <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <a href="https://maps.app.goo.gl/mDziTHN7qCaEPvDF8" class="map-link" target="_blank">
-                                <strong>Dirección</strong><br>
-                                Monseñor Rodriguez c/ Av. Julio Cesar Riquelme<br>
-                                Ciudad del Este, Paraguay
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <strong>Teléfonos</strong><br>
-                            +595 21 123-456<br>
-                            +595 981 123-456
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <strong>Email</strong><br>
-                            info@agrovterinaria.com.py<br>
-                            ventas@agrovterinaria.com.py
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div>
-                            <strong>Horarios</strong><br>
-                            Lunes a Viernes: 7:00 - 17:00<br>
-                            Sábados: 7:00 - 13:00
-                        </div>
+            <h2 class="section-title-v2">Contáctanos</h2>
+            <div class="contact-info-horizontal">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <a href="https://maps.app.goo.gl/mDziTHN7qCaEPvDF8" class="map-link" target="_blank">
+                            <strong>Dirección</strong><br>
+                            Monseñor Rodriguez c/ Av. Julio Cesar Riquelme<br>
+                            Ciudad del Este, Paraguay
+                        </a>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3>Solicitar Información</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="nombre">Nombre Completo</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="empresa">Empresa/Finca</label>
-                            <input type="text" id="empresa" name="empresa">
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="categoria">Categoría de Interés</label>
-                            <select id="categoria" name="categoria" required>
-                                <option value="">Seleccionar...</option>
-                                <option value="ganadero">Suministros Ganaderos</option>
-                                <option value="agricola">Productos Agrícolas</option>
-                                <option value="vacunacion">Servicios de Vacunación</option>
-                                <option value="mascotas">Alimentos para Mascotas</option>
-                                <option value="juguetes">Juguetes y Accesorios</option>
-                                <option value="ropa">Ropa y Equipamiento</option>
-                                <option value="maquinaria">Maquinaria Agrícola</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe tus necesidades o consultas..."></textarea>
-                        </div>
-                        <button type="submit" class="cta-button">Enviar Consulta</button>
-                    </form>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <strong>Teléfonos</strong><br>
+                        +595 21 123-456<br>
+                        +595 981 123-456
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        info@agrovterinaria.com.py<br>
+                        ventas@agrovterinaria.com.py
+                    </div>
                 </div>
             </div>
         </div>

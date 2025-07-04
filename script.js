@@ -30,52 +30,6 @@ dots.forEach((dot, index) => {
   })
 })
 
-// Enhanced form submission with WhatsApp integration
-document.querySelector("form").addEventListener("submit", function (e) {
-  e.preventDefault()
-
-  // Get form data
-  const formData = new FormData(this)
-  const nombre = formData.get("nombre")
-  const empresa = formData.get("empresa") || "No especificada"
-  const telefono = formData.get("telefono")
-  const email = formData.get("email")
-  const categoria = formData.get("categoria")
-  const mensaje = formData.get("mensaje") || "Sin mensaje adicional"
-
-  // Format WhatsApp message
-  const whatsappMessage = `
-🌾 *Nueva Consulta - Agroveterinaria Asunción S.R.L.*
-
-👤 *Cliente:* ${nombre}
-🏢 *Empresa:* ${empresa}
-📞 *Teléfono:* ${telefono}
-📧 *Email:* ${email}
-📋 *Categoría:* ${categoria}
-
-💬 *Mensaje:*
-${mensaje}
-
----
-_Enviado desde el sitio web_
-    `.trim()
-
-  // Your WhatsApp business number (replace with your actual number)
-  const whatsappNumber = "595981123456" // Format: country code + number (no + or spaces)
-
-  // Create WhatsApp URL
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
-
-  // Open WhatsApp
-  window.open(whatsappURL, "_blank")
-
-  // Show confirmation
-  alert("¡Gracias por tu consulta! Te estamos redirigiendo a WhatsApp para completar el contacto.")
-
-  // Reset form
-  this.reset()
-})
-
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
