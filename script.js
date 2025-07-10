@@ -56,10 +56,93 @@ window.addEventListener("scroll", () => {
   }
 })
 
-// Initialize carousel when DOM is loaded
+// Scroll Animation Observer
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate")
+    }
+  })
+}, observerOptions)
+
+// Counter animation for stats
+function animateCounter(element, target, duration = 2000) {
+  let start = 0
+  const increment = target / (duration / 16)
+
+  const timer = setInterval(() => {
+    start += increment
+    if (start >= target) {
+      element.textContent =
+        target + (element.textContent.includes("+") ? "+" : "") + (element.textContent.includes("%") ? "%" : "")
+      clearInterval(timer)
+    } else {
+      element.textContent =
+        Math.floor(start) +
+        (element.textContent.includes("+") ? "+" : "") +
+        (element.textContent.includes("%") ? "%" : "")
+    }
+  }, 16)
+}
+
+// Trigger counter animations when stats come into view
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const statNumber = entry.target.querySelector(".stat-number")
+        const text = statNumber.textContent
+        const number = Number.parseInt(text.replace(/\D/g, ""))
+
+        // Reset and animate
+        statNumber.textContent = "0" + (text.includes("+") ? "+" : "") + (text.includes("%") ? "%" : "")
+        animateCounter(statNumber, number)
+
+        statsObserver.unobserve(entry.target)
+      }
+    })
+  },
+  { threshold: 0.5 },
+)
+
+// Initialize carousel and animations when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   // Ensure first slide is active
   if (slides.length > 0) {
     showSlide(0)
   }
+
+  // Observe all elements with animation classes
+  const animatedElements = document.querySelectorAll(".fade-in-left, .fade-in-right, .fade-in-up")
+  animatedElements.forEach((el) => {
+    observer.observe(el)
+  })
+
+  // Add staggered animation delay for service cards
+  const serviceCards = document.querySelectorAll(".service-card")
+  serviceCards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.1}s`
+  })
+
+  // Add staggered animation delay for stats
+  const statItems = document.querySelectorAll(".stat-item")
+  statItems.forEach((item, index) => {
+    item.style.transitionDelay = `${index * 0.2}s`
+  })
+
+  // Add staggered animation delay for feature items
+  const featureItems = document.querySelectorAll(".feature-item")
+  featureItems.forEach((item, index) => {
+    item.style.transitionDelay = `${index * 0.15}s`
+  })
+
+  // Observe stat items for counter animation
+  statItems.forEach((item) => {
+    statsObserver.observe(item)
+  })
 })
